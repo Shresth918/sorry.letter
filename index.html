@@ -1,0 +1,492 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Note for Sargam ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --paper: #fffdfb;
+    --ink: #494447;
+    --pink: #e99bb0;
+    --dark-pink: #b96380;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(
+        135deg,
+        #fff9f7,
+        #fff0f4,
+        #fff8f0
+    );
+    font-family: 'Caveat', cursive;
+    color: var(--ink);
+}
+
+/* Soft background glow */
+
+.glow {
+    position: fixed;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    filter: blur(75px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.glow-one {
+    background: #f5c2d1;
+    top: -100px;
+    left: -80px;
+}
+
+.glow-two {
+    background: #ffe0d2;
+    bottom: -100px;
+    right: -80px;
+}
+
+/* Floating hearts */
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    bottom: -40px;
+    color: #e99bb0;
+    opacity: 0;
+    animation: floatUp linear forwards;
+    text-shadow: 0 2px 8px #e9a4b633;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.65;
+    }
+
+    85% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* Main layout */
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    animation: appear 1.2s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading */
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #b88b98;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(45px, 9vw, 72px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #59474c;
+}
+
+h1 span {
+    color: var(--dark-pink);
+    font-style: italic;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 23px;
+    color: #b18b96;
+}
+
+/* Letter paper */
+
+.paper {
+    position: relative;
+    background: rgba(255, 253, 251, 0.97);
+    padding: clamp(32px, 6vw, 60px);
+    border: 1px solid #f1e1e4;
+    border-radius: 3px;
+
+    box-shadow:
+        0 20px 55px rgba(137, 79, 96, 0.09),
+        0 3px 10px rgba(137, 79, 96, 0.04);
+
+    animation: paperAppear 1.3s 0.2s both;
+}
+
+@keyframes paperAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) rotate(-1deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+/* Pink tape */
+
+.tape {
+    position: absolute;
+    width: 145px;
+    height: 20px;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    background: rgba(245, 190, 203, 0.65);
+    box-shadow: 0 2px 5px #d49aa71c;
+}
+
+/* Corner heart */
+
+.corner-heart {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    font-family: Arial, sans-serif;
+    color: #ee9db3;
+    font-size: 19px;
+    animation: heartbeat 2.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Handwritten text */
+
+.letter {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(26px, 4.7vw, 35px);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.2px;
+    color: #494447;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.greeting {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(32px, 6vw, 42px);
+    font-weight: 600;
+    color: var(--dark-pink);
+    margin-bottom: 20px;
+}
+
+.signature {
+    margin-top: 30px;
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--dark-pink);
+}
+
+/* Decorative divider */
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 28px;
+    color: #d98ca3;
+    font-size: 22px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    width: 55px;
+    height: 1px;
+    background: #edc6d1;
+}
+
+/* Footer */
+
+.footer {
+    margin-top: 25px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    color: #b18f99;
+}
+
+/* Interactive button */
+
+.heart-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 22px;
+
+    border: 1px solid #e7bdc9;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.7);
+
+    color: #a65e78;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.heart-button:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px #d89bad30;
+}
+
+.heart-button:active {
+    transform: scale(0.96);
+}
+
+/* Mobile styling */
+
+@media (max-width: 480px) {
+    .page {
+        padding: 35px 12px;
+    }
+
+    .heading {
+        margin-bottom: 28px;
+    }
+
+    .paper {
+        padding: 43px 22px 35px;
+    }
+
+    .letter {
+        font-size: 27px;
+        line-height: 1.52;
+    }
+
+    .greeting {
+        font-size: 35px;
+    }
+
+    .corner-heart {
+        right: 14px;
+        top: 15px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+
+<div id="hearts" aria-hidden="true"></div>
+
+<main class="page">
+<div class="container">
+
+    <header class="heading">
+        <div class="eyebrow">A little note from the heart</div>
+
+        <h1>
+            Dear <span>Sargam</span> ♡
+        </h1>
+
+        <p class="subtitle">
+            Something I wanted to say, sincerely
+        </p>
+    </header>
+
+    <article class="paper">
+
+        <div class="tape"></div>
+        <div class="corner-heart">♥</div>
+
+        <p class="greeting">Hello Sargam,</p>
+
+        <p class="letter">Main tumse kuch kehna chahta hoon.
+
+Shayad tum yeh padhna chaho ya nahi, par yeh baat kaafi time se mere mann mein hai.
+
+Main uss Instagram story ke liye tumse dil se maafi maangna chahta hoon.
+
+Mera tumhe hurt karne ka kabhi koi iraada nahi tha. Baad mein samajh aaya ki meri uss ek baat ne tumhe kitna hurt kiya hoga, aur tab se yeh baat dil se gayi nahi.
+
+Main apni galti ko justify nahi kar raha, bas itna kehna chahta hoon ki woh sab jaanbujhkar nahi tha...
+
+Main bas chahta hoon ki tum samjho ki mujhe apni galti ka ehsaas hai. Tum mere liye important ho, aur mujhe sach mein afsos hai ki meri wajah se tumhe bura laga.
+
+Main tum par reply karne ya mujhe maaf karne ka koi pressure nahi daalna chahta. Bas dil se apni baat kehni thi. Agar kabhi tum mujhe maaf kar pao, toh main uske liye grateful rahunga. Aur agar tumhe space chahiye, toh main uski bhi respect karunga.</p>
+
+        <p class="signature">
+            I’m genuinely sorry. ♡
+        </p>
+
+        <div class="divider">♡</div>
+
+    </article>
+
+    <footer class="footer">
+        Written with sincerity · No pressure to reply
+    </footer>
+
+    <button class="heart-button" id="heartButton" type="button">
+        Send a little softness ♡
+    </button>
+
+</div>
+</main>
+
+<script>
+const heartLayer = document.getElementById("hearts");
+
+const symbols = ["♡", "♥", "✧", "ღ"];
+
+function createHeart() {
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (13 + Math.random() * 16) + "px";
+
+    const duration = 8 + Math.random() * 7;
+
+    heart.style.animationDuration = duration + "s";
+
+    heartLayer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+/* Start floating hearts */
+
+for (let i = 0; i < 10; i++) {
+    setTimeout(createHeart, i * 600);
+}
+
+setInterval(createHeart, 1500);
+
+/* Extra hearts when the button is clicked */
+
+document
+    .getElementById("heartButton")
+    .addEventListener("click", function () {
+
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+
+        this.textContent = "Sending you softness ♡";
+
+        setTimeout(() => {
+            this.textContent = "Send a little softness ♡";
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
+```
